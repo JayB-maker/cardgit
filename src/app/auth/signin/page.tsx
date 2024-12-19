@@ -64,8 +64,6 @@ export default function SignIn() {
     platform: "",
     language: "",
   });
-  const { session, isLoading } = useSession();
-  console.log(session, "session");
 
   useEffect(() => {
     const { userAgent, platform, language } = navigator;
@@ -106,14 +104,12 @@ export default function SignIn() {
       const res: any = await doSignIn(reqBody);
 
       if (res.status === "success") {
-        console.log(res, "res");
         setRequestLoader(false);
         toast.success(res?.message);
         router.push(ROUTES?.DASHBOARD);
         // Check for user status and navigate accordingly
       }
       if (res.status === "error") {
-        console.log(res);
         setRequestLoader(false);
         toast.error(res?.message);
       }
@@ -126,14 +122,12 @@ export default function SignIn() {
     const res: any = await doSignIn(payload);
 
     if (res.status === "success") {
-      console.log(res, "res");
       setRequestLoader(false);
       setRequestLogin(false);
       toast.success(res?.message);
       router.push(ROUTES?.DASHBOARD);
     }
     if (res.status === "error") {
-      console.log(res);
       setRequestLoader(false);
       setRequestLogin(false);
       toast.error(res?.message);

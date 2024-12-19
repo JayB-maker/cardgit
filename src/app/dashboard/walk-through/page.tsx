@@ -11,8 +11,6 @@ import useSession from "@/app/views/lib/hooks/useSession";
 const page = () => {
   const [setupStep, setSetupStep] = useState(1);
   const [details, setDetails] = useState<any>({});
-  const {session, isLoading} = useSession();
-    console.log(session, 'session')
 
   return (
     <>

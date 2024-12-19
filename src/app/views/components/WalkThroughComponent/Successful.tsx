@@ -20,8 +20,6 @@ const Successful = ({
 }) => {
   // Handle form submission
   const onSubmit = (data: any) => {
-    console.log("Submitted Data:", data);
-    console.log("Details State:", details);
     setSetupStep(setupStep + 1);
   };
 

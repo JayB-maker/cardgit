@@ -99,7 +99,6 @@ const Signup = () => {
     }
   };
 
-  // console.log(errors.registration_type?.message, "regtype")
   const onSubmit = async () => {
     const isValidated = await trigger();
 
@@ -117,13 +116,11 @@ const Signup = () => {
       const res: any = await doSignUp(reqBody);
 
       if (res.status === "success") {
-        console.log(res, "res");
         setRequestLoader(false);
         toast.success(res?.message);
         updateQuery();
       }
       if (res.status === "error") {
-        console.log(res);
         setRequestLoader(false);
         toast.error(res?.message);
       }
@@ -136,13 +133,11 @@ const Signup = () => {
     const res: any = await doSignUp(payload);
 
     if (res.status === "success") {
-      console.log(res, "res");
       setRequestLoader(false);
       toast.success(res?.message);
       router.push(ROUTES.SIGNIN);
     }
     if (res.status === "error") {
-      console.log(res);
       setRequestLoader(false);
       toast.error(res?.message);
     }

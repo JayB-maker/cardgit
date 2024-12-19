@@ -39,8 +39,6 @@ const WhatYouDo = ({
 
   // Handle form submission
   const onSubmit = (data: any) => {
-    console.log("Submitted Data:", data);
-    console.log("Details State:", details);
     setSetupStep(setupStep + 1);
   };
 
@@ -50,7 +48,6 @@ const WhatYouDo = ({
     { value: "viewer", label: "Viewer" },
   ];
 
-  console.log(setupStep);
   return (
     <div className="max-w-xl w-full shadow-sm bg-white px-6 py-8 rounded-lg flex flex-col gap-8">
       <div className="flex flex-col items-center gap-6">
