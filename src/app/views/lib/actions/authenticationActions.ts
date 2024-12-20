@@ -51,6 +51,49 @@ export async function doSignUp(signUpData: {
   }
 }
 
+export async function activateAccount(activationData: {
+  id?: string;
+  code?: string;
+}) {
+  try {
+    // Prepare the request
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...activationData, // Pass the object directly
+      }),
+    };
+
+    const response = await fetch(API_CONFIG.ACTIVATE_ACCOUNT, requestOptions);
+
+    const activateResponse = await response.json();
+
+    if (activateResponse.isSuccess) {
+      return {
+        data: activateResponse,
+        message: activateResponse?.message ?? "Successful",
+        status: "success",
+      };
+    } else {
+      return {
+        data: activateResponse,
+        message:
+          activateResponse?.message ?? "Error occurred, please try again",
+        status: "error",
+      };
+    }
+  } catch (error) {
+    return {
+      data: error,
+      message: "Network error, please try again later.",
+      status: "error",
+    };
+  }
+}
+
 export async function doSignIn(signinData: {
   email: string;
   password?: string;
@@ -85,20 +128,20 @@ export async function doSignIn(signinData: {
       const decodedToken: any = jwt.decode(loginData.token);
 
       if (decodedToken && typeof decodedToken === "object") {
-      // Save token and user data to session
-      session.accessToken = loginData.token;
-      session.isVerified = loginData.isVerified;
-      session.email = decodedToken.data.email;
-      session.profile_id = decodedToken?.data?.profile_id;
-      session.first_name = decodedToken?.data?.first_name;
-      session.last_name = decodedToken?.data?.last_name;
-      session.roles = decodedToken?.data?.roles;
-      session.company_id = decodedToken?.data?.company_id;
-      session.is_company_admin = decodedToken?.data?.is_company_admin;
-      session.is_cardgit_admin = decodedToken?.data?.is_cardgit_admin;
-      session.is_profile_updated = decodedToken?.data?.is_profile_updated;
-      session.is_subscribed = decodedToken?.data?.is_subscribed;
-      session.is_renewalRequired = decodedToken?.data?.is_renewalRequired;
+        // Save token and user data to session
+        session.accessToken = loginData.token;
+        session.isVerified = loginData.isVerified;
+        session.email = decodedToken.data.email;
+        session.profile_id = decodedToken?.data?.profile_id;
+        session.first_name = decodedToken?.data?.first_name;
+        session.last_name = decodedToken?.data?.last_name;
+        session.roles = decodedToken?.data?.roles;
+        session.company_id = decodedToken?.data?.company_id;
+        session.is_company_admin = decodedToken?.data?.is_company_admin;
+        session.is_cardgit_admin = decodedToken?.data?.is_cardgit_admin;
+        session.is_profile_updated = decodedToken?.data?.is_profile_updated;
+        session.is_subscribed = decodedToken?.data?.is_subscribed;
+        session.is_renewalRequired = decodedToken?.data?.is_renewalRequired;
       }
 
       // //Set access token

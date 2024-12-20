@@ -8,11 +8,13 @@ import BubbleChatIcon from "@/app/views/assets/images/bubble-chat.svg";
 import { ROUTES } from "@/app/views/lib/helpers/routes";
 import Signup from "@/app/views/components/SignupComponent/Signup";
 import Verification from "@/app/views/components/SignupComponent/Verification";
+import { useState } from "react";
 
 export default function SignUp() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pageQuery = searchParams.get("pageQuery");
+  const [email, setEmail] =useState("")
 
   return (
     <div className="relative min-h-screen w-full flex flex-col items-center gap-8 md:gap-16 bg-gray-light py-5 px-4 lg:px-6">
@@ -39,7 +41,7 @@ export default function SignUp() {
           </p>
         </div>
       </div>
-      {pageQuery === "verification" ? <Verification /> : <Signup />}
+      {pageQuery === "verification" ? <Verification email={email} /> : <Signup setEmail={setEmail} />}
       <div className="absolute bottom-4 lg:bottom-16 right-4 md:right-16 cursor-pointer w-fit px-4 py-2.5 bg-white rounded-full flex items-center gap-2 ">
         <Image src={BubbleChatIcon} alt="support-icon" />
         <p className="text-sm text-gray-dark">Contact Support</p>
