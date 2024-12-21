@@ -42,7 +42,7 @@ const schema = yup.object().shape({
   // registration_type: yup.string().required("Invalid registration type"),
 });
 
-const Signup = () => {
+const Signup = ({ setEmail }: { setEmail: any }) => {
   const {
     control,
     register,
@@ -76,8 +76,8 @@ const Signup = () => {
     setDeviceInfo({ user_agent: userAgent, platform, language });
   }, []);
 
-  const updateQuery = () => {
-    router.push("?pageQuery=verification"); // Updates the query params
+  const updateQuery = (id: "string") => {
+    router.push(`?pageQuery=verification&id=${id}`); // Updates the query params
   };
 
   const [registration, setRegistrations] = useState<Registration>({
@@ -110,7 +110,7 @@ const Signup = () => {
         password: registration?.password,
         confirm_password: registration?.confirm_password,
         registration_type: "App",
-        device_info: deviceInfo
+        device_info: deviceInfo,
       };
 
       const res: any = await doSignUp(reqBody);
@@ -118,7 +118,7 @@ const Signup = () => {
       if (res.status === "success") {
         setRequestLoader(false);
         toast.success(res?.message);
-        updateQuery();
+        updateQuery(res?.data?.id);
       }
       if (res.status === "error") {
         setRequestLoader(false);
