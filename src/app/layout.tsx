@@ -35,7 +35,7 @@ export default function RootLayout({
             }
           >
             {children}
-            <ToastContainer />
+            <ToastContainer position="bottom-right" />
           </Suspense>
         </GoogleOAuthProvider>
         {/* </SessionProvider> */}

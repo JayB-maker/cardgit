@@ -11,7 +11,7 @@ import ResetPassword from "@/app/views/components/ResetPasswordComponent/ResetPa
 import SuccessfulModal from "@/app/views/components/SuccessfulModal/SuccessfulModal";
 import NewPassword from "@/app/views/components/ResetPasswordComponent/NewPassword";
 
-export default function SignUp() {
+const ResetPasswordPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pageQuery = searchParams.get("pageQuery");
@@ -66,4 +66,6 @@ export default function SignUp() {
       )}
     </>
   );
-}
+};
+
+export default ResetPasswordPage;

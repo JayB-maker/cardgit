@@ -36,7 +36,7 @@ const schema = yup.object().shape({
   password: yupValidators.password,
 });
 
-export default function SignIn() {
+const SignIn = () => {
   const {
     control,
     register,
@@ -279,4 +279,6 @@ export default function SignIn() {
       </div>
     </div>
   );
-}
+};
+
+export default SignIn;

@@ -41,7 +41,7 @@ export const PrimaryButton = ({
       className={`${
         (loader || beforeIcon || afterIcon) &&
         "flex justify-center items-center"
-      } text-white bg-primaryBlue hover:bg-primaryBlue-hover  disabled:bg-gray-light py-[10px] lg:py-[10px] px-4 lg:px-4 text-sm rounded-lg focus:outline-none whitespace-nowrap ${className}`}
+      } text-white bg-primaryBlue hover:bg-primaryBlue-hover  disabled:bg-gray-light py-[10px] lg:py-[16px] px-4 lg:px-4 text-sm rounded-lg focus:outline-none whitespace-nowrap ${className}`}
       onClick={onClick}
       disabled={disabled ? true : false}
       {...rest}

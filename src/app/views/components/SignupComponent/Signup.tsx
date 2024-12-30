@@ -174,6 +174,8 @@ const Signup = ({ setEmail }: { setEmail: any }) => {
           };
           xhrRequest.send();
         });
+
+        console.log(userInfo, 'userInfo');
         setRegisterPayload({
           full_name: userInfo?.name,
           registration_type: "Google",
@@ -214,10 +216,10 @@ const Signup = ({ setEmail }: { setEmail: any }) => {
         <form className=" flex flex-col w-full gap-6">
           {/* <input type="hidden" name="remember" defaultValue="true" /> */}
           <CustomInputField
-            extraLabel="Full Name (first name first)"
+            extraLabel="Full Name"
             type="text"
             autoComplete="full_name"
-            placeholder="Full Name"
+            placeholder="First name and Last name"
             errors={errors.full_name?.message}
             errorMessage={errors.full_name?.message}
             {...register("full_name", { required: true })}
