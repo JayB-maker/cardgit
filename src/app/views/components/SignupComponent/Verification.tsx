@@ -8,6 +8,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import {
   activateAccount,
   doSignUp,
+  resendCode,
 } from "../../lib/actions/authenticationActions";
 import { toast } from "react-toastify";
 import { ROUTES } from "../../lib/helpers/routes";
@@ -21,25 +22,22 @@ const Verification = ({ email }: { email: string }) => {
   const id = searchParams.get("id");
 
   const handleResendOtp = async () => {
-    // setReconfirmLoading(true);
-    // const reqBody = {
-    //   email: userNotConfirmed === "true" ? userMail : details?.email,
-    // };
-    // try {
-    //   const res = await postData(
-    //     `${CONFIG.BASE_URL}${apiEndpoints.RECONFIRM_EMAIL}`,
-    //     reqBody
-    //   );
-    //   if (res.isSuccessful) {
-    //     toast.success(res.message);
-    //   }
-    //   if (!res.isSuccessful) {
-    //     toast.error(res.message);
-    //   }
-    // } catch (error) {
-    //   toast.error(errorHandler(error));
-    // }
-    // setReconfirmLoading(false);
+    // setRequestLoader(true);
+    const reqBody: { profile_id: string } = {
+      profile_id: id as string,
+    };
+
+    const res: any = await resendCode(reqBody);
+
+    if (res.status === "success") {
+      // setRequestLoader(false);
+      toast.success(res?.message);
+      // router?.push(ROUTES?.SIGNIN);
+    }
+    if (res.status === "error") {
+      setRequestLoader(false);
+      toast.error(res?.message);
+    }
   };
 
   const onSubmit = async () => {
@@ -52,13 +50,11 @@ const Verification = ({ email }: { email: string }) => {
     const res: any = await activateAccount(reqBody);
 
     if (res.status === "success") {
-      console.log(res, "res");
       setRequestLoader(false);
       toast.success(res?.message);
       router?.push(ROUTES?.SIGNIN);
     }
     if (res.status === "error") {
-      console.log(res);
       setRequestLoader(false);
       toast.error(res?.message);
     }
@@ -80,17 +76,17 @@ const Verification = ({ email }: { email: string }) => {
             valueLength={6}
             value={otpValue}
           />
-          <div className="w-full mt-2">
-            <PrimaryButton
-              title={"Verify Code"}
-              // type="submit"
-              className="w-full"
-              disabled={trimmedOTP?.length < 6}
-              onClick={onSubmit}
-            />
-          </div>
-          <Countdown initialTime={180} onResendOtp={handleResendOtp} />
         </form>
+        <div className="w-full mt-2">
+          <PrimaryButton
+            title={"Verify Code"}
+            // type="submit"
+            className="w-full"
+            disabled={trimmedOTP?.length < 6}
+            onClick={onSubmit}
+          />
+        </div>
+        <Countdown initialTime={180} onResendOtp={handleResendOtp} />
       </div>
     </div>
   );

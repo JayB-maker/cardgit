@@ -1,8 +1,7 @@
 "use client";
 
-import { SessionProvider } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useSession from "../views/lib/hooks/useSession";
 import PageLoaderModal from "../views/components/Loader/PageLoaderModal";
 import { ROUTES } from "../views/lib/helpers/routes";
@@ -13,7 +12,6 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   const { session, isLoading } = useSession();
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -32,7 +30,7 @@ export default function DashboardLayout({
         router.push(ROUTES?.SIGNIN);
       }
     }
-  }, []);
+  }, [session, isLoading]);
 
   if (isLoading) return <PageLoaderModal />;
 

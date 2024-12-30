@@ -5,8 +5,12 @@ import CustomCheckboxInput from "./views/components/CustomHTMLElements/CustomChe
 import CustomInputField from "./views/components/CustomHTMLElements/CustomInputField";
 import CustomOtpInput from "./views/components/CustomHTMLElements/CustomOtpInput";
 import CustomSelect from "./views/components/CustomHTMLElements/CustomSelect";
+import { PrimaryButton } from "./views/components/Button/Button";
+import { useRouter } from "next/navigation";
+import { ROUTES } from "./views/lib/helpers/routes";
 
 export default function Home() {
+  const router = useRouter();
   const [checked, setChecked] = useState(true);
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,6 +37,16 @@ export default function Home() {
         checked={checked}
         onChange={handleCheckboxChange}
       />
+      <div className="flex gap-2 items-center">
+        <PrimaryButton
+          title={"Sign In"}
+          onClick={() => router.push(ROUTES.SIGNIN)}
+        />
+        <PrimaryButton
+          title={"Sign Up"}
+          onClick={() => router.push(ROUTES.SIGNUP)}
+        />
+      </div>
       <CustomSelect name="custom" options={[]} />
       <CustomOtpInput onChange={console.log} value="" valueLength={4} />
     </div>

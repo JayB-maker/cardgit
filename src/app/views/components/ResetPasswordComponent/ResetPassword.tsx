@@ -5,13 +5,78 @@ import CustomInputField from "../CustomHTMLElements/CustomInputField";
 import { PrimaryButton } from "../Button/Button";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "../../lib/helpers/routes";
+import { yupValidators } from "../../lib/helpers/yupValidators";
+import { Resolver, useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { toast } from "react-toastify";
+import {
+  doForgotPassword,
+  doSignUp,
+} from "../../lib/actions/authenticationActions";
+
+type FormValues = {
+  email: string;
+};
+
+type Registration = {
+  email: string;
+};
+
+const schema = yup.object().shape({
+  email: yupValidators.email,
+});
 
 const ResetPassword = () => {
+  const {
+    control,
+    register,
+    handleSubmit,
+    watch,
+    trigger,
+    formState: { errors, isDirty },
+  } = useForm<FormValues>({
+    resolver: yupResolver(schema) as Resolver<FormValues>,
+  });
   const [email, setEmail] = useState("");
   const router = useRouter();
+  const [requestLoader, setRequestLoader] = useState(false);
 
-  const updateQuery = () => {
-    router.push("?pageQuery=otp-verification"); // Updates the query params
+  const updateQuery = (id: string) => {
+    router.push(`?pageQuery=otp-verification&profile_id=${id}`); // Updates the query params
+  };
+
+  const [registration, setRegistrations] = useState<Registration>({
+    email: "",
+  });
+
+  const handleFormInputChange = (e: any) => {
+    const { name, value } = e.target;
+    setRegistrations({ ...registration, [name]: value });
+  };
+
+  const onSubmit = async () => {
+    const isValidated = await trigger();
+
+    if (isValidated) {
+      setRequestLoader(true);
+
+      const reqBody = {
+        email: registration?.email,
+      };
+
+      const res: any = await doForgotPassword(reqBody);
+
+      if (res.status === "success") {
+        setRequestLoader(false);
+        toast.success(res?.message);
+        updateQuery(res?.data?.id);
+      }
+      if (res.status === "error") {
+        setRequestLoader(false);
+        toast.error(res?.message);
+      }
+    }
   };
 
   return (
@@ -26,36 +91,35 @@ const ResetPassword = () => {
       <div className="flex flex-col gap-6">
         <form className=" flex flex-col w-full gap-6">
           <CustomInputField
-            // id="email-address"
             extraLabel="Email Address"
-            name="email"
-            type="email"
+            type="text"
             autoComplete="email"
-            required
-            style=" "
             placeholder="Email address"
-            value={email}
-            onChange={(e: any) => setEmail(e.target.value)}
+            errors={errors.email?.message}
+            errorMessage={errors.email?.message}
+            {...register("email", { required: true })}
+            onChange={(e: any) => handleFormInputChange(e)}
           />
-          <div className="w-full mt-2">
-            <PrimaryButton
-              title={"Reset"}
-              type="submit"
-              className="w-full"
-              onClick={updateQuery}
-              disabled={!email}
-            />
-          </div>
-          <p className="text-gray text-base text-center">
-            Remember password?{" "}
-            <span
-              onClick={() => router.push(ROUTES.SIGNIN)}
-              className="text-primaryBlue cursor-pointer "
-            >
-              Sign in
-            </span>
-          </p>
         </form>
+        <div className="w-full mt-2">
+          <PrimaryButton
+            title={"Reset"}
+            type="submit"
+            className="w-full"
+            onClick={onSubmit}
+            loader={requestLoader}
+            disabled={requestLoader}
+          />
+        </div>
+        <p className="text-gray text-base text-center">
+          Remember password?{" "}
+          <span
+            onClick={() => router.push(ROUTES.SIGNIN)}
+            className="text-primaryBlue cursor-pointer "
+          >
+            Sign in
+          </span>
+        </p>
       </div>
     </div>
   );

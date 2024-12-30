@@ -23,23 +23,26 @@ import { ROUTES } from "../../lib/helpers/routes";
 
 type FormValues = {
   email: string;
+  full_name: string;
   confirm_password: string;
-  // registration_type: string;
   password: string;
 };
 
 type Registration = {
   email: string;
+  full_name: string;
   confirm_password: string;
-  // registration_type: string;
   password: string;
 };
 
 const schema = yup.object().shape({
   email: yupValidators.email,
   password: yupValidators.password,
-  confirm_password: yupValidators.password,
-  // registration_type: yup.string().required("Invalid registration type"),
+  full_name: yupValidators.firstName,
+  confirm_password: yup
+    .string()
+    .oneOf([yup.ref("password")], "Passwords must match")
+    .required("Confirm password is required"),
 });
 
 const Signup = ({ setEmail }: { setEmail: any }) => {
@@ -65,6 +68,7 @@ const Signup = ({ setEmail }: { setEmail: any }) => {
   const [proceedToRegister, setRegistration] = useState(false);
   const [requestLoader, setRequestLoader] = useState(false);
   const [requestLogin, setRequestLogin] = useState(false);
+  const [checked, setChecked] = useState(false);
   const [deviceInfo, setDeviceInfo] = useState({
     user_agent: "",
     platform: "",
@@ -80,8 +84,13 @@ const Signup = ({ setEmail }: { setEmail: any }) => {
     router.push(`?pageQuery=verification&id=${id}`); // Updates the query params
   };
 
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.checked);
+  };
+
   const [registration, setRegistrations] = useState<Registration>({
     email: "",
+    full_name: "",
     password: "",
     confirm_password: "",
   });
@@ -107,6 +116,7 @@ const Signup = ({ setEmail }: { setEmail: any }) => {
 
       const reqBody = {
         email: registration?.email,
+        full_name: registration?.full_name,
         password: registration?.password,
         confirm_password: registration?.confirm_password,
         registration_type: "App",
@@ -165,6 +175,7 @@ const Signup = ({ setEmail }: { setEmail: any }) => {
           xhrRequest.send();
         });
         setRegisterPayload({
+          full_name: userInfo?.name,
           registration_type: "Google",
           email: userInfo?.email,
         });
@@ -202,6 +213,16 @@ const Signup = ({ setEmail }: { setEmail: any }) => {
         </div>
         <form className=" flex flex-col w-full gap-6">
           {/* <input type="hidden" name="remember" defaultValue="true" /> */}
+          <CustomInputField
+            extraLabel="Full Name (first name first)"
+            type="text"
+            autoComplete="full_name"
+            placeholder="Full Name"
+            errors={errors.full_name?.message}
+            errorMessage={errors.full_name?.message}
+            {...register("full_name", { required: true })}
+            onChange={(e: any) => handleFormInputChange(e)}
+          />
           <CustomInputField
             extraLabel="Email Address"
             type="text"
@@ -256,6 +277,9 @@ const Signup = ({ setEmail }: { setEmail: any }) => {
           />
 
           <CustomCheckboxInput
+            onChange={handleCheckboxChange}
+            name="terms"
+            checked={checked}
             extraLabel={
               <p className="text-gray-dark text-sm">
                 I agree to the{" "}
@@ -277,7 +301,13 @@ const Signup = ({ setEmail }: { setEmail: any }) => {
             className="w-full"
             onClick={onSubmit}
             loader={requestLoader}
-            disabled={requestLoader}
+            disabled={
+              requestLoader ||
+              !checked ||
+              !registration?.email ||
+              !registration?.password ||
+              !registration?.confirm_password
+            }
           />
         </div>
       </div>

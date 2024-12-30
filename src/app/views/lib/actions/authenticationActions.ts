@@ -6,8 +6,7 @@ import { getSession } from "../util";
 import jwt from "jsonwebtoken";
 
 export async function doSignUp(signUpData: {
-  first_name?: string;
-  last_name?: string;
+  full_name?: string;
   email: string;
   password?: string;
   confirm_password?: string;
@@ -39,6 +38,89 @@ export async function doSignUp(signUpData: {
       return {
         data: signUpResponse,
         message: signUpResponse?.message ?? "Error occurred, please try again",
+        status: "error",
+      };
+    }
+  } catch (error) {
+    return {
+      data: error,
+      message: "Network error, please try again later.",
+      status: "error",
+    };
+  }
+}
+export async function doForgotPassword(forgotPasswordData: { email: string }) {
+  try {
+    // Prepare the request
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...forgotPasswordData, // Pass the object directly
+      }),
+    };
+
+    const response = await fetch(API_CONFIG.FORGOT_PASSWORD, requestOptions);
+
+    const forgotPasswordResponse = await response.json();
+
+    if (forgotPasswordResponse.isSuccess) {
+      return {
+        data: forgotPasswordResponse,
+        message: forgotPasswordResponse?.message ?? "Successful",
+        status: "success",
+      };
+    } else {
+      return {
+        data: forgotPasswordResponse,
+        message:
+          forgotPasswordResponse?.message ?? "Error occurred, please try again",
+        status: "error",
+      };
+    }
+  } catch (error) {
+    return {
+      data: error,
+      message: "Network error, please try again later.",
+      status: "error",
+    };
+  }
+}
+
+export async function doResetPassword(resetPasswordData: {
+  code: string;
+  password: string;
+  confirm_password: string;
+}) {
+  try {
+    // Prepare the request
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...resetPasswordData, // Pass the object directly
+      }),
+    };
+
+    const response = await fetch(API_CONFIG.RESET_PASSWORD, requestOptions);
+
+    const resetPasswordResponse = await response.json();
+
+    if (resetPasswordResponse.isSuccess) {
+      return {
+        data: resetPasswordResponse,
+        message: resetPasswordResponse?.message ?? "Successful",
+        status: "success",
+      };
+    } else {
+      return {
+        data: resetPasswordResponse,
+        message:
+          resetPasswordResponse?.message ?? "Error occurred, please try again",
         status: "error",
       };
     }
@@ -82,6 +164,129 @@ export async function activateAccount(activationData: {
         data: activateResponse,
         message:
           activateResponse?.message ?? "Error occurred, please try again",
+        status: "error",
+      };
+    }
+  } catch (error) {
+    return {
+      data: error,
+      message: "Network error, please try again later.",
+      status: "error",
+    };
+  }
+}
+
+export async function validateOTP(validationData: {
+  profile_id?: string;
+  code?: string;
+}) {
+  try {
+    // Prepare the request
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...validationData, // Pass the object directly
+      }),
+    };
+
+    const response = await fetch(API_CONFIG.VALIDATE_OTP, requestOptions);
+
+    const validationResponse = await response.json();
+
+    if (validationResponse.isSuccess) {
+      return {
+        data: validationResponse,
+        message: validationResponse?.message ?? "Successful",
+        status: "success",
+      };
+    } else {
+      return {
+        data: validationResponse,
+        message:
+          validationResponse?.message ?? "Error occurred, please try again",
+        status: "error",
+      };
+    }
+  } catch (error) {
+    return {
+      data: error,
+      message: "Network error, please try again later.",
+      status: "error",
+    };
+  }
+}
+
+export async function resendCode(resendCodeData: { profile_id?: string }) {
+  try {
+    // Prepare the request
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...resendCodeData, // Pass the object directly
+      }),
+    };
+
+    const response = await fetch(API_CONFIG.RESEND_CODE, requestOptions);
+
+    const resendCodeResponse = await response.json();
+
+    if (resendCodeResponse.isSuccess) {
+      return {
+        data: resendCodeResponse,
+        message: resendCodeResponse?.message ?? "Successful",
+        status: "success",
+      };
+    } else {
+      return {
+        data: resendCodeResponse,
+        message:
+          resendCodeResponse?.message ?? "Error occurred, please try again",
+        status: "error",
+      };
+    }
+  } catch (error) {
+    return {
+      data: error,
+      message: "Network error, please try again later.",
+      status: "error",
+    };
+  }
+}
+
+export async function resendCardgitCode(resendCardgitCodeData: { profile_id?: string }) {
+  try {
+    // Prepare the request
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...resendCardgitCodeData, // Pass the object directly
+      }),
+    };
+
+    const response = await fetch(API_CONFIG.RESEND_CARDGIT_CODE, requestOptions);
+
+    const resendCardgitCodeResponse = await response.json();
+
+    if (resendCardgitCodeResponse.isSuccess) {
+      return {
+        data: resendCardgitCodeResponse,
+        message: resendCardgitCodeResponse?.message ?? "Successful",
+        status: "success",
+      };
+    } else {
+      return {
+        data: resendCardgitCodeResponse,
+        message:
+          resendCardgitCodeResponse?.message ?? "Error occurred, please try again",
         status: "error",
       };
     }

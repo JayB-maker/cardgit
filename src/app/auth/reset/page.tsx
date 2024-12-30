@@ -9,6 +9,7 @@ import { ROUTES } from "@/app/views/lib/helpers/routes";
 import OTPVerification from "@/app/views/components/ResetPasswordComponent/OTPVerification";
 import ResetPassword from "@/app/views/components/ResetPasswordComponent/ResetPassword";
 import SuccessfulModal from "@/app/views/components/SuccessfulModal/SuccessfulModal";
+import NewPassword from "@/app/views/components/ResetPasswordComponent/NewPassword";
 
 export default function SignUp() {
   const router = useRouter();
@@ -43,6 +44,8 @@ export default function SignUp() {
         </div>
         {pageQuery === "otp-verification" ? (
           <OTPVerification />
+        ) : pageQuery === "new-password" ? (
+          <NewPassword />
         ) : (
           <ResetPassword />
         )}
