@@ -9,7 +9,7 @@ import { PrimaryButton } from "./views/components/Button/Button";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "./views/lib/helpers/routes";
 
-export default function Home() {
+const Home = () => {
   const router = useRouter();
   const [checked, setChecked] = useState(true);
 
@@ -52,3 +52,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;
