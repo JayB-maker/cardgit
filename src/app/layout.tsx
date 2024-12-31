@@ -18,25 +18,25 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const clientId = process.env.NEXT_APP_GOOGLE_CLIENT_ID as string || "";
+  const clientId = (process.env.NEXT_APP_GOOGLE_CLIENT_ID as string) || "";
 
   return (
     <html lang="en">
       <body className={inter.className} suppressHydrationWarning={true}>
         {/* <SessionProvider> */}
-        <GoogleOAuthProvider clientId={clientId}>
-          <Suspense
-            fallback={
-              <div className="w-full h-screen flex flex-col items-center justify-center p-4">
-                <h1>Oops, Something went wrong</h1>
-                <p>Check your network and try again</p>
-              </div>
-            }
-          >
+        <Suspense
+          fallback={
+            <div className="w-full h-screen flex flex-col items-center justify-center p-4">
+              <h1>Oops, Something went wrong</h1>
+              <p>Check your network and try again</p>
+            </div>
+          }
+        >
+          <GoogleOAuthProvider clientId={clientId}>
             {children}
             <ToastContainer position="bottom-right" />
-          </Suspense>
-        </GoogleOAuthProvider>
+          </GoogleOAuthProvider>
+        </Suspense>
         {/* </SessionProvider> */}
       </body>
     </html>
