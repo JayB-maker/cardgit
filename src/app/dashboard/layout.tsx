@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import useSession from "../views/lib/hooks/useSession";
 import PageLoaderModal from "../views/components/Loader/PageLoaderModal";
 import { ROUTES } from "../views/lib/helpers/routes";
@@ -34,5 +34,18 @@ export default function DashboardLayout({
 
   if (isLoading) return <PageLoaderModal />;
 
-  return <>{children}</>;
+  return (
+    <>
+      <Suspense
+        fallback={
+          <div className="w-full h-screen flex flex-col items-center justify-center p-4">
+            <h1>Oops, Something went wrong</h1>
+            <p>Check your network and try again</p>
+          </div>
+        }
+      >
+        {children}
+      </Suspense>
+    </>
+  );
 }
