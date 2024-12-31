@@ -4,7 +4,6 @@ import "./views/styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { Suspense } from "react";
-import { SessionProvider } from "next-auth/react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,7 +18,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const clientId = process.env.NEXT_APP_GOOGLE_CLIENT_ID as string;
+  const clientId = process.env.NEXT_APP_GOOGLE_CLIENT_ID as string || "";
 
   return (
     <html lang="en">
