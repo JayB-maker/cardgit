@@ -1,11 +1,34 @@
 "use client";
 
 import React, { useState } from "react";
-import AboutYou from "../../views/components/WalkThroughComponent/AboutYou";
-import WhatYouDo from "../../views/components/WalkThroughComponent/WhatYouDo";
-import ContactInformation from "../../views/components/WalkThroughComponent/ContactInformation";
-import YourPhoto from "../../views/components/WalkThroughComponent/YourPhoto";
-import Successful from "../../views/components/WalkThroughComponent/Successful";
+// import AboutYou from "../../views/components/WalkThroughComponent/AboutYou";
+// import WhatYouDo from "../../views/components/WalkThroughComponent/WhatYouDo";
+// import ContactInformation from "../../views/components/WalkThroughComponent/ContactInformation";
+// import YourPhoto from "../../views/components/WalkThroughComponent/YourPhoto";
+// import Successful from "../../views/components/WalkThroughComponent/Successful";
+import dynamic from "next/dynamic";
+
+const AboutYou = dynamic(
+  () => import("../../views/components/WalkThroughComponent/AboutYou"),
+  { ssr: false }
+);
+const WhatYouDo = dynamic(
+  () => import("../../views/components/WalkThroughComponent/WhatYouDo"),
+  { ssr: false }
+);
+const ContactInformation = dynamic(
+  () =>
+    import("../../views/components/WalkThroughComponent/ContactInformation"),
+  { ssr: false }
+);
+const YourPhoto = dynamic(
+  () => import("../../views/components/WalkThroughComponent/YourPhoto"),
+  { ssr: false }
+);
+const Successful = dynamic(
+  () => import("../../views/components/WalkThroughComponent/Successful"),
+  { ssr: false }
+);
 
 const page = () => {
   const [setupStep, setSetupStep] = useState(1);

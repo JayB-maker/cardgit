@@ -5,10 +5,14 @@ import Image from "next/image";
 import CardgitLogo from "@/app/views/assets/images/desktop-logo.svg";
 import MobileCardgitLogo from "@/app/views/assets/images/mobile-logo.svg";
 import BubbleChatIcon from "@/app/views/assets/images/bubble-chat.svg";
+import dynamic from "next/dynamic"; // Import for dynamic components
 import { ROUTES } from "@/app/views/lib/helpers/routes";
-import Signup from "@/app/views/components/SignupComponent/Signup";
-import Verification from "@/app/views/components/SignupComponent/Verification";
 import { useState } from "react";
+// import Signup from "@/app/views/components/SignupComponent/Signup";
+// import Verification from "@/app/views/components/SignupComponent/Verification";
+
+const Signup = dynamic(() => import("@/app/views/components/SignupComponent/Signup"), { ssr: false });
+const Verification = dynamic(() => import("@/app/views/components/SignupComponent/Verification"), { ssr: false });
 
 const SignUp = () => {
   const router = useRouter();
