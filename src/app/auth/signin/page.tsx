@@ -19,7 +19,6 @@ import * as yup from "yup";
 import { yupValidators } from "@/app/views/lib/helpers/yupValidators";
 import { Resolver, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import useSession from "@/app/views/lib/hooks/useSession";
 
 type FormValues = {
   email: string;

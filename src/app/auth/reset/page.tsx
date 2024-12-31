@@ -14,7 +14,7 @@ import NewPassword from "@/app/views/components/ResetPasswordComponent/NewPasswo
 const ResetPasswordPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const pageQuery = searchParams.get("pageQuery");
+  const pageQuery = searchParams.get("pageQuery") || "";
 
   return (
     <>

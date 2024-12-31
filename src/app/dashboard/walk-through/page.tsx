@@ -6,7 +6,6 @@ import WhatYouDo from "../../views/components/WalkThroughComponent/WhatYouDo";
 import ContactInformation from "../../views/components/WalkThroughComponent/ContactInformation";
 import YourPhoto from "../../views/components/WalkThroughComponent/YourPhoto";
 import Successful from "../../views/components/WalkThroughComponent/Successful";
-import useSession from "@/app/views/lib/hooks/useSession";
 
 const page = () => {
   const [setupStep, setSetupStep] = useState(1);

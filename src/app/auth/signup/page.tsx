@@ -13,7 +13,7 @@ import { useState } from "react";
 const SignUp = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const pageQuery = searchParams.get("pageQuery");
+  const pageQuery = searchParams.get("pageQuery") || "";
   const [email, setEmail] = useState("");
 
   return (
