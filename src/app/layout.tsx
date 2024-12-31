@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./views/styles/globals.css";
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
+// import { ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 import { Suspense } from "react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Cardgit",
@@ -18,7 +18,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // const clientId = (process.env.NEXT_APP_GOOGLE_CLIENT_ID as string) || "";
+  const clientId = (process.env.NEXT_APP_GOOGLE_CLIENT_ID as string) || "";
 
   return (
     <html lang="en">
@@ -32,10 +32,10 @@ export default function RootLayout({
             </div>
           }
         >
-          {/* <GoogleOAuthProvider clientId={clientId}> */}
+          <GoogleOAuthProvider clientId={clientId}>
             {children}
-            <ToastContainer position="bottom-right" />
-          {/* </GoogleOAuthProvider> */}
+            {/* <ToastContainer position="bottom-right" /> */}
+          </GoogleOAuthProvider>
         </Suspense>
         {/* </SessionProvider> */}
       </body>
