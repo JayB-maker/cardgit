@@ -1,3 +1,5 @@
+"use client";
+
 import { Red_Hat_Display } from "next/font/google";
 import React, { JSX, useEffect, useState } from "react";
 import Header from "../Header/Header";

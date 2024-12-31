@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image";
 import React from "react";
 import ExclamationIcon from "../../assets/images/exclamation.svg";

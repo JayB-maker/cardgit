@@ -1,9 +1,9 @@
+"use client";
+
 import Image from "next/image";
-import React, { Dispatch, SetStateAction, useRef, useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import SuccessIcon from "../../assets/images/green-success-icon.svg";
-import { OutlineButton, PrimaryButton } from "../Button/Button";
-import { convertToBase64 } from "../../lib/helpers/convertToBase64";
-import { toast } from "react-toastify";
+import { PrimaryButton } from "../Button/Button";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "../../lib/helpers/routes";
 

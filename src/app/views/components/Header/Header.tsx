@@ -1,3 +1,5 @@
+"use client";
+
 import React, { JSX, useState } from "react";
 import Image from "next/image";
 import CallIcon from "../../assets/images/call-icon.svg";

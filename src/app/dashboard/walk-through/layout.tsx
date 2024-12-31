@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import CardgitLogo from "@/app/views/assets/images/desktop-logo.svg";
 import MobileCardgitLogo from "@/app/views/assets/images/mobile-logo.svg";

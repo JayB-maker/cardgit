@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 // import { ReactComponent as NairaIcon } from "../../assets/images/svg/input-naira.svg";
 

@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image";
 import React from "react";
 import card from "../../assets/images/empty-state-icon.svg";

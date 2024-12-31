@@ -1,3 +1,5 @@
+"use client";
+
 import Lottie from "react-lottie-player";
 import Spin from "../../assets/json/spinner-white.json";
 

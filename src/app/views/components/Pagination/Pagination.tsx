@@ -1,3 +1,5 @@
+"use client";
+
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import GreenLeftArrow from "../../assets/images/arrow-left-icon.svg";

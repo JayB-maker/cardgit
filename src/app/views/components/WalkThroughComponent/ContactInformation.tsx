@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import React, { Dispatch, SetStateAction } from "react";
 import ContactIcon from "../../assets/images/contact-icon.svg";

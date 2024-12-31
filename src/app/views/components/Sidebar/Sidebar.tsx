@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import Logo from "../../assets/images/logo.svg";
 import CloseIcon from "../../assets/images/close-icon.svg";

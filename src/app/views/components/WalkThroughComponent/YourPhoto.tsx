@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image";
 import React, { Dispatch, SetStateAction, useRef, useState } from "react";
 import CameraIcon from "../../assets/images/camera-icon.svg";
