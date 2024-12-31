@@ -40,10 +40,10 @@ const AuthenticatedLayout = ({
   const [user, setUser] = useState<any>(null);
   const [sideBar, setSideBar] = useState(false);
 
-  const userData =
-    typeof window !== "undefined"
-      ? localStorage?.getItem(LOCAL_STORAGE_KEYS.USER)
-      : null;
+  const userData:any = {}
+    // typeof window !== "undefined"
+    //   ? localStorage?.getItem(LOCAL_STORAGE_KEYS.USER)
+    //   : null;
 
   const isTokenExpired = (token: string) => {
     const decoded = decodeJWT(token);
