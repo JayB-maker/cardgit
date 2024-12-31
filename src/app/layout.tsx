@@ -18,7 +18,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // const clientId = (process.env.NEXT_APP_GOOGLE_CLIENT_ID as string) || "";
+  const clientId = (process.env.NEXT_APP_GOOGLE_CLIENT_ID as string) || "";
 
   return (
     <html lang="en">
@@ -32,7 +32,7 @@ export default function RootLayout({
             </div>
           }
         >
-          <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
+          <GoogleOAuthProvider clientId={clientId}>
             {children}
             <ToastContainer position="bottom-right" />
           </GoogleOAuthProvider>
