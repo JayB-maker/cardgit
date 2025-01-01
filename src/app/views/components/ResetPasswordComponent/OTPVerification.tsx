@@ -87,7 +87,7 @@ const OTPVerification = () => {
             value={otpValue}
           />
         </form>
-        <div className="w-full mt-2">
+        {/* <div className="w-full mt-2">
           <PrimaryButton
             title={"Proceed"}
             // type="submit"
@@ -95,7 +95,7 @@ const OTPVerification = () => {
             disabled={trimmedOTP?.length < 6}
             onClick={onSubmit}
           />
-        </div>
+        </div> */}
         <Countdown initialTime={180} onResendOtp={handleResendOtp} />
       </div>
     </div>

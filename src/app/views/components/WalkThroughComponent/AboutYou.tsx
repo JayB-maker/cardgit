@@ -117,11 +117,11 @@ const AboutYou = ({
           />
           {/*  */}
 
-          <PrimaryButton
+          {/* <PrimaryButton
             title={"Next"}
             onClick={() => onSubmit(details)}
             // disabled={!details?.fullName || !details?.country || !details?.city}
-          />
+          /> */}
         </div>
       </div>
     </div>

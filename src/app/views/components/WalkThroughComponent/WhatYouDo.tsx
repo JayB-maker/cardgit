@@ -99,13 +99,13 @@ const WhatYouDo = ({
           />
           {/*  */}
 
-          <PrimaryButton
+          {/* <PrimaryButton
             title={"Next"}
             onClick={() => onSubmit(details)}
             // disabled={
             //   !details?.industry || !details?.company || !details?.jobTitle
             // }
-          />
+          /> */}
         </div>
       </div>
     </div>

@@ -42,7 +42,7 @@ const ContactInformation = ({
         >
           <CustomPhoneInput extraLabel="Phone Number" />
 
-          <div className="grid items-center w-full grid-cols-1 md:grid-cols-2 gap-4">
+          {/* <div className="grid items-center w-full grid-cols-1 md:grid-cols-2 gap-4">
             <OutlineButton
               title={"Skip"}
               onClick={() => setSetupStep(setupStep + 1)}
@@ -54,7 +54,7 @@ const ContactInformation = ({
             //     !details?.industry || !details?.company || !details?.jobTitle
             //   }
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
