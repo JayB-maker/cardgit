@@ -1,6 +1,6 @@
 "use client";
 
-import { PrimaryButton } from "./views/components/Button/Button";
+import { CardgitButton, PrimaryButton } from "./views/components/Button/Button";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "./views/lib/helpers/routes";
 
@@ -21,16 +21,16 @@ const Home = () => {
         checked={checked}
         onChange={handleCheckboxChange}
       /> */}
-      {/* <div className="flex gap-2 items-center">
-        <PrimaryButton
+      <div className="flex gap-2 items-center">
+        <CardgitButton
           title={"Sign In"}
           onClick={() => router.push(ROUTES.SIGNIN)}
         />
-        <PrimaryButton
+        <CardgitButton
           title={"Sign Up"}
           onClick={() => router.push(ROUTES.SIGNUP)}
         />
-      </div> */}
+      </div>
       {/* <CustomSelect name="custom" options={[]} />
       <CustomOtpInput onChange={console.log} value="" valueLength={4} /> */}
     </div>
