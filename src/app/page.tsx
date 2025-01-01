@@ -21,7 +21,7 @@ const Home = () => {
         checked={checked}
         onChange={handleCheckboxChange}
       /> */}
-      <div className="flex gap-2 items-center">
+      {/* <div className="flex gap-2 items-center">
         <PrimaryButton
           title={"Sign In"}
           onClick={() => router.push(ROUTES.SIGNIN)}
@@ -30,7 +30,7 @@ const Home = () => {
           title={"Sign Up"}
           onClick={() => router.push(ROUTES.SIGNUP)}
         />
-      </div>
+      </div> */}
       {/* <CustomSelect name="custom" options={[]} />
       <CustomOtpInput onChange={console.log} value="" valueLength={4} /> */}
     </div>
