@@ -7,7 +7,6 @@ import Countdown from "../Countdown/Countdown";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   activateAccount,
-  doSignUp,
   resendCode,
 } from "../../lib/actions/authenticationActions";
 import { toast } from "react-toastify";
@@ -77,15 +76,15 @@ const Verification = ({ email }: { email: string }) => {
             value={otpValue}
           />
         </form>
-        {/* <div className="w-full mt-2">
+        <div className="w-full mt-2">
           <PrimaryButton
             title={"Verify Code"}
-            // type="submit"
+            type="submit"
             className="w-full"
             disabled={trimmedOTP?.length < 6}
             onClick={onSubmit}
           />
-        </div> */}
+        </div>
         <Countdown initialTime={180} onResendOtp={handleResendOtp} />
       </div>
     </div>

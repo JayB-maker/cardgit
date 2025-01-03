@@ -251,7 +251,7 @@ const SignIn = () => {
               onClickActionButton={togglePasswordField}
             />
           </form>
-          {/* <div className="w-full mt-2">
+          <div className="w-full mt-2">
             <PrimaryButton
               title={"Sign in"}
               type="submit"
@@ -260,7 +260,7 @@ const SignIn = () => {
               loader={requestLoader}
               disabled={requestLoader}
             />
-          </div> */}
+          </div>
           <p className="text-gray text-base text-center">
             Forgot password?{" "}
             <span

@@ -296,7 +296,7 @@ const Signup = ({ setEmail }: { setEmail: any }) => {
             }
           />
         </form>
-        {/* <div className="w-full mt-2">
+        <div className="w-full mt-2">
           <PrimaryButton
             title={"Sign up"}
             type="submit"
@@ -311,7 +311,7 @@ const Signup = ({ setEmail }: { setEmail: any }) => {
               !registration?.confirm_password
             }
           />
-        </div> */}
+        </div>
       </div>
     </div>
   );

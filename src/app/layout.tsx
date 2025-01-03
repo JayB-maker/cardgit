@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./views/styles/globals.css";
-// import { ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Suspense } from "react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
@@ -34,7 +34,7 @@ export default function RootLayout({
         >
           <GoogleOAuthProvider clientId={clientId}>
             {children}
-            {/* <ToastContainer position="bottom-right" /> */}
+            <ToastContainer position="bottom-right" />
           </GoogleOAuthProvider>
         </Suspense>
         {/* </SessionProvider> */}

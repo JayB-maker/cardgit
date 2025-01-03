@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { Dispatch, SetStateAction, useRef, useState } from "react";
 import CameraIcon from "../../assets/images/camera-icon.svg";
 import UploadIcon from "../../assets/images/upload-image-icon.svg";
-import { PrimaryButton } from "../Button/Button";
+import { OutlineButton, PrimaryButton } from "../Button/Button";
 import { convertToBase64 } from "../../lib/helpers/convertToBase64";
 import { toast } from "react-toastify";
 
@@ -164,7 +164,7 @@ const YourPhoto = ({
             />
           </div>
 
-          {/* <div className="grid items-center w-full grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid items-center w-full grid-cols-1 md:grid-cols-2 gap-4">
             <OutlineButton
               title={"Skip"}
               onClick={() => setSetupStep(setupStep + 1)}
@@ -173,7 +173,7 @@ const YourPhoto = ({
               title={"Next"}
               onClick={() => onSubmit(details)}
             />
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

@@ -82,7 +82,7 @@ const AboutYou = ({
         </div>
       </div>
       <div className="flex flex-col gap-6">
-        <div
+        <form
           className=" flex flex-col w-full gap-6"
           //   onSubmit={handleSubmit(onSubmit)}
         >
@@ -117,12 +117,12 @@ const AboutYou = ({
           />
           {/*  */}
 
-          {/* <PrimaryButton
+          <PrimaryButton
             title={"Next"}
             onClick={() => onSubmit(details)}
-            // disabled={!details?.fullName || !details?.country || !details?.city}
-          /> */}
-        </div>
+            disabled={!details?.fullName || !details?.country || !details?.city}
+          />
+        </form>
       </div>
     </div>
   );

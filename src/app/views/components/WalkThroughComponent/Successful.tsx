@@ -39,10 +39,10 @@ const Successful = ({
           </p>
         </div>
       </div>
-      {/* <PrimaryButton
+      <PrimaryButton
         title={"Go to Dashboard"}
         onClick={() => router.push(ROUTES.DASHBOARD)}
-      /> */}
+      />
     </div>
   );
 };

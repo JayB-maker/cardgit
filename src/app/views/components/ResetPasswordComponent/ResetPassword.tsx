@@ -101,7 +101,7 @@ const ResetPassword = () => {
             onChange={(e: any) => handleFormInputChange(e)}
           />
         </form>
-        {/* <div className="w-full mt-2">
+        <div className="w-full mt-2">
           <PrimaryButton
             title={"Reset"}
             type="submit"
@@ -110,7 +110,7 @@ const ResetPassword = () => {
             loader={requestLoader}
             disabled={requestLoader}
           />
-        </div> */}
+        </div>
         <p className="text-gray text-base text-center">
           Remember password?{" "}
           <span

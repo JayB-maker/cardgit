@@ -7,15 +7,15 @@ import MobileCardgitLogo from "@/app/views/assets/images/mobile-logo.svg";
 import BubbleChatIcon from "@/app/views/assets/images/bubble-chat.svg";
 import dynamic from "next/dynamic"; // Import for dynamic components
 import { ROUTES } from "@/app/views/lib/helpers/routes";
-// import OTPVerification from "@/app/views/components/ResetPasswordComponent/OTPVerification";
-// import ResetPassword from "@/app/views/components/ResetPasswordComponent/ResetPassword";
-// import SuccessfulModal from "@/app/views/components/SuccessfulModal/SuccessfulModal";
-// import NewPassword from "@/app/views/components/ResetPasswordComponent/NewPassword";
+import OTPVerification from "@/app/views/components/ResetPasswordComponent/OTPVerification";
+import ResetPassword from "@/app/views/components/ResetPasswordComponent/ResetPassword";
+import SuccessfulModal from "@/app/views/components/SuccessfulModal/SuccessfulModal";
+import NewPassword from "@/app/views/components/ResetPasswordComponent/NewPassword";
 
-const OTPVerification = dynamic(() => import("@/app/views/components/ResetPasswordComponent/OTPVerification"), { ssr: false });
-const ResetPassword = dynamic(() => import("@/app/views/components/ResetPasswordComponent/ResetPassword"), { ssr: false });
-const NewPassword = dynamic(() => import("@/app/views/components/ResetPasswordComponent/NewPassword"), { ssr: false });
-const SuccessfulModal = dynamic(() => import("@/app/views/components/SuccessfulModal/SuccessfulModal"), { ssr: false });
+// const OTPVerification = dynamic(() => import("@/app/views/components/ResetPasswordComponent/OTPVerification"), { ssr: false });
+// const ResetPassword = dynamic(() => import("@/app/views/components/ResetPasswordComponent/ResetPassword"), { ssr: false });
+// const NewPassword = dynamic(() => import("@/app/views/components/ResetPasswordComponent/NewPassword"), { ssr: false });
+// const SuccessfulModal = dynamic(() => import("@/app/views/components/SuccessfulModal/SuccessfulModal"), { ssr: false });
 
 const ResetPasswordPage = () => {
   const router = useRouter();

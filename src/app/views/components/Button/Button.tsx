@@ -195,47 +195,47 @@ export const PrimaryButton = ({
 //   );
 // };
 
-// export const OutlineButton = ({
-//   title,
-//   onClick,
-//   className,
-//   type,
-//   disabled,
-//   afterIcon,
-//   beforeIcon,
-//   loader,
-//   ...rest
-// }: ButtonProps) => {
-//   const style = { height: "24px", width: "24px" };
-//   return (
-//     <button
-//       type={type}
-//       className={`${
-//         (beforeIcon || afterIcon) && "flex gap-2 items-center"
-//       } text-gray-dark bg-gray-light hover:opacity-90 disabled:text-[#C8CCD0] py-[10px] px-[16px] text-sm rounded-lg focus:outline-none whitespace-nowrap ${className}`}
-//       onClick={onClick}
-//       disabled={disabled ? true : false}
-//       {...rest}
-//     >
-//       {beforeIcon && (
-//         <span className="w-[20px]">
-//           <Image src={beforeIcon} alt="" />
-//         </span>
-//       )}
-//       {title}
-//       {afterIcon && (
-//         <span>
-//           <Image src={afterIcon} alt="" />
-//         </span>
-//       )}
-//       {loader && (
-//         <span className="">
-//           <Lottie animationData={Spinner} style={style} play />
-//         </span>
-//       )}
-//     </button>
-//   );
-// };
+export const OutlineButton = ({
+  title,
+  onClick,
+  className,
+  type,
+  disabled,
+  afterIcon,
+  beforeIcon,
+  loader,
+  ...rest
+}: ButtonProps) => {
+  const style = { height: "24px", width: "24px" };
+  return (
+    <button
+      type={type}
+      className={`${
+        (beforeIcon || afterIcon) && "flex gap-2 items-center"
+      } text-gray-dark bg-gray-light hover:opacity-90 disabled:text-[#C8CCD0] py-[10px] px-[16px] text-sm rounded-lg focus:outline-none whitespace-nowrap ${className}`}
+      onClick={onClick}
+      disabled={disabled ? true : false}
+      {...rest}
+    >
+      {beforeIcon && (
+        <span className="w-[20px]">
+          <Image src={beforeIcon} alt="" />
+        </span>
+      )}
+      {title}
+      {afterIcon && (
+        <span>
+          <Image src={afterIcon} alt="" />
+        </span>
+      )}
+      {loader && (
+        <span className="">
+          <Loader />
+        </span>
+      )}
+    </button>
+  );
+};
 
 // export const OtherButton = ({
 //   title,

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React, { Dispatch, SetStateAction } from "react";
 import ContactIcon from "../../assets/images/contact-icon.svg";
-import { PrimaryButton } from "../Button/Button";
+import { OutlineButton, PrimaryButton } from "../Button/Button";
 import CustomPhoneInput from "../CustomHTMLElements/CustomPhoneInput";
 
 const ContactInformation = ({
@@ -36,13 +36,13 @@ const ContactInformation = ({
         </div>
       </div>
       <div className="flex flex-col gap-6">
-        <div
+        <form
           className=" flex flex-col w-full gap-6"
           //   onSubmit={handleSubmit(onSubmit)}
         >
           <CustomPhoneInput extraLabel="Phone Number" />
 
-          {/* <div className="grid items-center w-full grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid items-center w-full grid-cols-1 md:grid-cols-2 gap-4">
             <OutlineButton
               title={"Skip"}
               onClick={() => setSetupStep(setupStep + 1)}
@@ -54,8 +54,8 @@ const ContactInformation = ({
             //     !details?.industry || !details?.company || !details?.jobTitle
             //   }
             />
-          </div> */}
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   );
