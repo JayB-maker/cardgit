@@ -1,6 +1,5 @@
 // "use client";
 
-import Link from "next/link";
 import Lottie from "react-lottie-player";
 import Spinner from "../../assets/json/spinner-white.json";
 import Image from "next/image";
@@ -278,41 +277,41 @@ export const OtherButton = ({
   );
 };
 
-export const PrimaryLink = ({ title, url, className, ...rest }: LinkProps) => {
-  return (
-    <Link href={url}>
-      <div
-        className={`text-white bg-primaryBlue hover:bg-primaryBlue-hover hover:border-[#004822] disabled:bg-[#C8CCD0] disabled:border-[#C8CCD0] border-primaryBlue border-[1px] py-4 px-6 text-[1.05rem] font-[300] rounded-[5px] focus:outline-none ${className}`}
-        {...rest}
-      >
-        {title}
-      </div>
-    </Link>
-  );
-};
+// export const PrimaryLink = ({ title, url, className, ...rest }: LinkProps) => {
+//   return (
+//     <Link href={url}>
+//       <div
+//         className={`text-white bg-primaryBlue hover:bg-primaryBlue-hover hover:border-[#004822] disabled:bg-[#C8CCD0] disabled:border-[#C8CCD0] border-primaryBlue border-[1px] py-4 px-6 text-[1.05rem] font-[300] rounded-[5px] focus:outline-none ${className}`}
+//         {...rest}
+//       >
+//         {title}
+//       </div>
+//     </Link>
+//   );
+// };
 
-export const OutlineLink = ({ title, url, className, ...rest }: LinkProps) => {
-  return (
-    <Link href={url}>
-      <div
-        className={`text-primaryBlue text-center bg-white border-primaryBlue hover:border-[#004822] hover:text-[#004822] disabled:border-[#C8CCD0] border-[1px] py-4 px-6 text-[1.05rem] font-[400] focus:outline-none ${className}`}
-        {...rest}
-      >
-        {title}
-      </div>
-    </Link>
-  );
-};
+// export const OutlineLink = ({ title, url, className, ...rest }: LinkProps) => {
+//   return (
+//     <Link href={url}>
+//       <div
+//         className={`text-primaryBlue text-center bg-white border-primaryBlue hover:border-[#004822] hover:text-[#004822] disabled:border-[#C8CCD0] border-[1px] py-4 px-6 text-[1.05rem] font-[400] focus:outline-none ${className}`}
+//         {...rest}
+//       >
+//         {title}
+//       </div>
+//     </Link>
+//   );
+// };
 
-export const OtherLink = ({ title, url, className, ...rest }: LinkProps) => {
-  return (
-    <Link href={url}>
-      <div
-        className={`border-[1px] text-[1.05rem] font-[300] rounded-[5px] focus:outline-none ${className}`}
-        {...rest}
-      >
-        {title}
-      </div>
-    </Link>
-  );
-};
+// export const OtherLink = ({ title, url, className, ...rest }: LinkProps) => {
+//   return (
+//     <Link href={url}>
+//       <div
+//         className={`border-[1px] text-[1.05rem] font-[300] rounded-[5px] focus:outline-none ${className}`}
+//         {...rest}
+//       >
+//         {title}
+//       </div>
+//     </Link>
+//   );
+// };
