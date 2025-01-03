@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { Dispatch, SetStateAction, useRef, useState } from "react";
 import CameraIcon from "../../assets/images/camera-icon.svg";
 import UploadIcon from "../../assets/images/upload-image-icon.svg";
-import { OutlineButton, PrimaryButton } from "../Button/Button";
+import { PrimaryButton } from "../Button/Button";
 import { convertToBase64 } from "../../lib/helpers/convertToBase64";
 import { toast } from "react-toastify";
 

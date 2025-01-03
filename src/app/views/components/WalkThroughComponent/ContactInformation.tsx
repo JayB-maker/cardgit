@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React, { Dispatch, SetStateAction } from "react";
 import ContactIcon from "../../assets/images/contact-icon.svg";
-import { OutlineButton, PrimaryButton } from "../Button/Button";
+import { PrimaryButton } from "../Button/Button";
 import CustomPhoneInput from "../CustomHTMLElements/CustomPhoneInput";
 
 const ContactInformation = ({
